@@ -1,58 +1,9 @@
 # ROS2
 
-- create ws
-```
-source /opt/ros/foxy/setup.bash
-mkdir src
-cd src
-```
-- Create a python package
-```
-# under src folder run
-ros2 pkg create --build-type ament_python my_rotate_bot
-# build
 
-```
-- build
-```bash
-# from ws root folder
-colcon build
-```
-- source the new package
-```bash
-# from ws folder
-. install/setup.bash
-```
 
 ## urdf and launch
-- Create `model.urdf` file under `urdf` folder
-- Create `robot_state_publisher.launch.py` launch file under `launch` folder
 
-
-## setup
-- Add all `data files` like urdf and launch file to `data_files` list for deploy at build
-
-```python
-data_files=[
-        ('share/' + package_name, glob('launch/*.launch.py')),
-        ('share/' + package_name + '/urdf', glob('urdf/*.urdf'))
-    ],
-```
-
-
-## pkg dependencies
-- add `<exec_depend>` to package.xml
-
-```xml
-<exec_depend>xacro</exec_depend>
-```
-
-- install pkg dependencies
-- from ws root folder
-  
-```bash
-rosdep install --from-paths src --ignore-src -r -y
-```
 
 ## build
 ```bash
@@ -109,14 +60,12 @@ ros2 run joint_state_publisher joint_state_publisher ./src/my_rotate_bot/urdf/mo
 
 ## robot_state_publisher vs joint_state_publisher
 
-### robot_state_publisher
-[robot_state_publisher](http://wiki.ros.org/robot_state_publisher)  
-robot_state_publisher uses the `URDF` specified by the parameter `robot_description` and the joint positions from the topic `joint_states` to calculate the forward kinematics of the robot and publish the results via `tf`.
 
-> Without `joint_state_publisher` only /tf_static are publish
 
-### joint_state_publisher
-[join_state_publisher wiki](http://wiki.ros.org/joint_state_publisher)
-This package publishes `sensor_msgs/JointState` messages for a robot. The package reads the robot_description parameter from the `parameter server`, finds all of the **non-fixed** joints and publishes a JointState message with all those joints defined. 
 
-This package can be used in conjunction with the `robot_state_publisher` node to also publish **transforms** for all joint states. 
+# Wiki
+```
+git submodule add https://github.com/robobe/ros2_tutorial.wiki.git wiki
+git commit -m "Adding wiki"
+git push
+```

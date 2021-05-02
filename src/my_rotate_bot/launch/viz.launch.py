@@ -51,10 +51,15 @@ def generate_launch_description():
             output='screen',
             arguments=['-d', rviz_config_dir])
 
+    joint_state_publisher_gui = Node(
+            package='joint_state_publisher_gui',
+            node_executable='joint_state_publisher_gui',
+            node_name='joint_state_gui',
+            output='screen'
+    )
     return LaunchDescription([
-        # missing:
         rviz,
         node_joint_state_publisher,
-        # 2. joint-state-publisher-gui
+        joint_state_publisher_gui,
         node_robot_state_publisher,
     ])
