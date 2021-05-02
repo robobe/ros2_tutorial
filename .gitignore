@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+install/
+log
+
+.Python
+venv/
+
