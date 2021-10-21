@@ -14,7 +14,7 @@
     
     
       
-        <title>Spwan robot - ROS Coockbook</title>
+        <title>Sites - ROS Coockbook</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#launch-gazebo" class="md-skip">
+        <a href="#sites" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Spwan robot
+              Sites
             
           </span>
         </div>
@@ -208,14 +208,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -264,7 +262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../plugins/hello_model_plugin/" class="md-nav__link">
+      <a href="../../gazebo/plugins/hello_model_plugin/" class="md-nav__link">
         Hello model
       </a>
     </li>
@@ -283,21 +281,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gazebo/launch-gazebo/" class="md-nav__link">
         Spwan robot
       </a>
-      
     </li>
   
 
@@ -337,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resource/" class="md-nav__link">
+      <a href="../../gazebo/resource/" class="md-nav__link">
         Resource
       </a>
     </li>
@@ -433,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../resources/mkdocs/" class="md-nav__link">
+      <a href="../mkdocs/" class="md-nav__link">
         mkdocs
       </a>
     </li>
@@ -492,8 +480,30 @@
               
                 
                 
-                <h1 id="launch-gazebo">launch Gazebo</h1>
-<div class="highlight"><pre><span></span><code>
+                <h1 id="sites">Sites</h1>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ZgzsYvne5Gs">[RoboCup][V-RoHOW] Hands-on with ROS 2</a></li>
+<li><a href="https://answers.ros.org/question/375249/gazebo-model-plugin-for-ros2/"> Gazebo model plugin for ROS2
+</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>Without more info it is difficult to know where you&#39;re exactly stuck, but for me the trickiest was to get all the paths set up correctly so that everything was loaded correctly.
+
+Note for instance the model path set in the package.xml file of the description package:
+
+  &lt;export&gt;
+    &lt;build_type&gt;ament_cmake&lt;/build_type&gt;
+    &lt;gazebo_ros gazebo_model_path=&quot;${prefix}/..&quot; /&gt;
+  &lt;/export&gt;
+
+, which is then picked up in the launch file using GazeboRosPaths:
+
+model_path, plugin_path, media_path = GazeboRosPaths.get_paths()
+
+Most of the complexity is because ${prefix} in package.xml, get_package_share_directory in the launch file, and package:// in the URDF don&#39;t all point to the same directory under your installation, especially if you involve Rviz. See especially this commit to see some changes I had to make along the way to get it all to work:
+
+https://gitlab.com/boldhearts/ros2_bo...
+
+Hopefully this helps you in the right direction! Let us know of specific issues/error messages you&#39;re getting, so that I can then try to make this answer more specific.
 </code></pre></div>
                 
               
@@ -510,41 +520,6 @@
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../plugins/hello_model_plugin/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hello model" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Hello model
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../resource/" class="md-footer__link md-footer__link--next" aria-label="Next: Resource" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Resource
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

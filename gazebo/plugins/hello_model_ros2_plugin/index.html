@@ -1,0 +1,997 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.3">
+    
+    
+      
+        <title>ROS2 Gazebo Model plugin - ROS Coockbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.5143246d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ros2-gazebo-model-plugin" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ROS Coockbook" class="md-header__button md-logo" aria-label="ROS Coockbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ROS Coockbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ROS2 Gazebo Model plugin
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ROS Coockbook" class="md-nav__button md-logo" aria-label="ROS Coockbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    ROS Coockbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros2/launch/" class="md-nav__link">
+        Launch
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Gazebo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Gazebo" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gazebo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Plugins
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugins" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Plugins
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hello_model_plugin/" class="md-nav__link">
+        Hello model
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../launch-gazebo/" class="md-nav__link">
+        Spwan robot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wine.md" class="md-nav__link">
+        Camera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tastings.md" class="md-nav__link">
+        LIDAR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resource/" class="md-nav__link">
+        Resource
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          ROS2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ROS2" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ROS2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../msg.md" class="md-nav__link">
+        Msg
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resources/mkdocs/" class="md-nav__link">
+        mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about.md" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ros-ws" class="md-nav__link">
+    ROS WS
+  </a>
+  
+    <nav class="md-nav" aria-label="ROS WS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ros2-pkg" class="md-nav__link">
+    ROS2 pkg
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mulecar_plugins" class="md-nav__link">
+    mulecar_plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="mulecar_plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header-gazebo_ros_simplehpp" class="md-nav__link">
+    Header (gazebo_ros_simple.hpp)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpp" class="md-nav__link">
+    CPP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmakeliststxt" class="md-nav__link">
+    CMakeLists.txt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagexml" class="md-nav__link">
+    package.xml
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mulecar_sim" class="md-nav__link">
+    mulecar_sim
+  </a>
+  
+    <nav class="md-nav" aria-label="mulecar_sim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#world" class="md-nav__link">
+    world
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    Test
+  </a>
+  
+    <nav class="md-nav" aria-label="Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-gazebo" class="md-nav__link">
+    Run gazebo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-topics" class="md-nav__link">
+    List Topics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pub-and-test" class="md-nav__link">
+    Pub and Test
+  </a>
+  
+    <nav class="md-nav" aria-label="Pub and Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-gazebo-verbose-log" class="md-nav__link">
+    View gazebo verbose log
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-launch-file" class="md-nav__link">
+    using launch file
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="ros2-gazebo-model-plugin">ROS2 Gazebo Model plugin</h1>
+<ul>
+<li>Create simple GAZEBO plugin as a ROS2 package</li>
+<li>Simple bind between ROS and gazebo</li>
+</ul>
+<h2 id="ros-ws">ROS WS</h2>
+<div class="highlight"><pre><span></span><code>ros_ws
+├── install
+│   ├── mulecar_sim
+│   │    └── worlds
+│   └── mulecar_plugins
+│        └── lib
+│              └── libgazebo_ros_simple.so (link to build folder)
+├── build
+├── log
+└── src
+   ├── mulecar_plugins
+   │   ├── CMakeLists.txt
+   │   ├── package.xml
+   │   ├── src
+   │   │   └── gazebo_ros_simple.cpp
+   │   └── include
+   │       └── gazebo_ros_simple.hpp
+   └── mulecar_sim
+        ├── CMakeLists.txt
+        ├── package.xml
+        ├── worlds
+        │   └── gazebo_ros_simple.world
+        └── launch
+            └── gazebo_ros_simple.launch.py
+</code></pre></div>
+<h3 id="ros2-pkg">ROS2 pkg</h3>
+<div class="highlight"><pre><span></span><code>sudo apt install ros-foxy-gazebo-ros
+
+<span class="c1"># cmake file to work with gazebo</span>
+sudo apt install ros-foxy-gazebo-dev
+</code></pre></div>
+<h2 id="mulecar_plugins">mulecar_plugins</h2>
+<p>Simple plugin demonstration how to subscribe to topic and send string msg.  </p>
+<p>pkg files
+- Plugin header file
+- Plugin cpp file
+- CMakeLists.txt
+- package.xml</p>
+<h3 id="header-gazebo_ros_simplehpp">Header (gazebo_ros_simple.hpp)</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef GAZEBO_PLUGINS__GAZEBO_ROS_SIMPLE_HPP_</span>
+<span class="cp">#define GAZEBO_PLUGINS__GAZEBO_ROS_SIMPLE_HPP_</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gazebo/common/Plugin.hh&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;std_msgs/msg/string.hpp&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">gazebo_plugins</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">class</span> <span class="nc">GazeboRosSimplePrivate</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">class</span> <span class="nc">GazeboRosSimple</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">gazebo</span><span class="o">::</span><span class="n">ModelPlugin</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">GazeboRosSimple</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">GazeboRosSimple</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">protected</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Load</span><span class="p">(</span><span class="n">gazebo</span><span class="o">::</span><span class="n">physics</span><span class="o">::</span><span class="n">ModelPtr</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">sdf</span><span class="o">::</span><span class="n">ElementPtr</span><span class="w"> </span><span class="n">sdf</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnUpdate</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnRosStringMsg</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">::</span><span class="n">ConstSharedPtr</span><span class="w"> </span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">GazeboRosSimplePrivate</span><span class="o">&gt;</span><span class="w"> </span><span class="n">impl_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace gazebo_plugins</span>
+
+<span class="cp">#endif</span>
+</code></pre></div>
+<h3 id="cpp">CPP</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gazebo_ros_simple.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gazebo_ros/node.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;std_msgs/msg/string.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">TOPIC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gazebo_ros_simple&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">gazebo_plugins</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">GazeboRosSimplePrivate</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">/// A pointer to the GazeboROS node.</span>
+<span class="w">  </span><span class="n">gazebo_ros</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">ros_node_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Pointer to subscriber</span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">string_sub_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Pointer to the update event connection</span>
+<span class="w">  </span><span class="n">gazebo</span><span class="o">::</span><span class="n">event</span><span class="o">::</span><span class="n">ConnectionPtr</span><span class="w"> </span><span class="n">update_connection_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">GazeboRosSimple</span><span class="o">::</span><span class="n">GazeboRosSimple</span><span class="p">()</span><span class="w"></span>
+<span class="o">:</span><span class="w"> </span><span class="n">impl_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">GazeboRosSimplePrivate</span><span class="o">&gt;</span><span class="p">())</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">GazeboRosSimple</span><span class="o">::~</span><span class="n">GazeboRosSimple</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">GazeboRosSimple</span><span class="o">::</span><span class="n">Load</span><span class="p">(</span><span class="n">gazebo</span><span class="o">::</span><span class="n">physics</span><span class="o">::</span><span class="n">ModelPtr</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">sdf</span><span class="o">::</span><span class="n">ElementPtr</span><span class="w"> </span><span class="n">sdf</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">impl_</span><span class="o">-&gt;</span><span class="n">ros_node_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gazebo_ros</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">Get</span><span class="p">(</span><span class="n">sdf</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Get QoS profiles</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">gazebo_ros</span><span class="o">::</span><span class="n">QoS</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">qos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">impl_</span><span class="o">-&gt;</span><span class="n">ros_node_</span><span class="o">-&gt;</span><span class="n">get_qos</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">impl_</span><span class="o">-&gt;</span><span class="n">string_sub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">impl_</span><span class="o">-&gt;</span><span class="n">ros_node_</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">TOPIC</span><span class="p">,</span><span class="w"> </span><span class="n">qos</span><span class="p">.</span><span class="n">get_subscription_qos</span><span class="p">(</span><span class="s">&quot;gazebo_ros_simple&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">SystemDefaultsQoS</span><span class="p">()),</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">GazeboRosSimple</span><span class="o">::</span><span class="n">OnRosStringMsg</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Callback on every iteration</span>
+<span class="w">  </span><span class="n">impl_</span><span class="o">-&gt;</span><span class="n">update_connection_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gazebo</span><span class="o">::</span><span class="n">event</span><span class="o">::</span><span class="n">Events</span><span class="o">::</span><span class="n">ConnectWorldUpdateBegin</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">GazeboRosSimple</span><span class="o">::</span><span class="n">OnUpdate</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">GazeboRosSimple</span><span class="o">::</span><span class="n">OnRosStringMsg</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">::</span><span class="n">ConstSharedPtr</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">gzmsg</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;OnRosStringMsg&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">impl_</span><span class="o">-&gt;</span><span class="n">ros_node_</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">GazeboRosSimple</span><span class="o">::</span><span class="n">OnUpdate</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">GZ_REGISTER_MODEL_PLUGIN</span><span class="p">(</span><span class="n">GazeboRosSimple</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace gazebo_plugins</span>
+</code></pre></div>
+<h3 id="cmakeliststxt">CMakeLists.txt</h3>
+<div class="highlight"><pre><span></span><code>cmake_minimum_required<span class="o">(</span>VERSION <span class="m">3</span>.5<span class="o">)</span>
+project<span class="o">(</span>mulecar_plugins<span class="o">)</span>
+
+set<span class="o">(</span>CMAKE_CXX_STANDARD <span class="m">14</span><span class="o">)</span>
+
+<span class="k">if</span><span class="o">(</span>CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES <span class="s2">&quot;Clang&quot;</span><span class="o">)</span>
+  add_compile_options<span class="o">(</span>-Wall -Wextra -Wpedantic<span class="o">)</span>
+endif<span class="o">()</span>
+
+<span class="c1"># find dependencies</span>
+find_package<span class="o">(</span>ament_cmake REQUIRED<span class="o">)</span>
+find_package<span class="o">(</span>gazebo_dev REQUIRED<span class="o">)</span>
+find_package<span class="o">(</span>gazebo_ros REQUIRED<span class="o">)</span>
+find_package<span class="o">(</span>rclcpp REQUIRED<span class="o">)</span>
+find_package<span class="o">(</span>std_msgs REQUIRED<span class="o">)</span>
+
+<span class="c1"># gazebo_ros_simple</span>
+add_library<span class="o">(</span>gazebo_ros_simple SHARED
+  src/gazebo_ros_simple.cpp
+<span class="o">)</span>
+target_include_directories<span class="o">(</span>gazebo_ros_simple PUBLIC include<span class="o">)</span>
+ament_target_dependencies<span class="o">(</span>gazebo_ros_simple
+  <span class="s2">&quot;gazebo_dev&quot;</span>
+  <span class="s2">&quot;gazebo_ros&quot;</span>
+  <span class="s2">&quot;std_msgs&quot;</span>
+  <span class="s2">&quot;rclcpp&quot;</span>
+<span class="o">)</span>
+
+install<span class="o">(</span>TARGETS
+  gazebo_ros_simple
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin<span class="o">)</span>
+
+
+
+<span class="k">if</span><span class="o">(</span>BUILD_TESTING<span class="o">)</span>
+  find_package<span class="o">(</span>ament_lint_auto REQUIRED<span class="o">)</span>
+  ament_lint_auto_find_test_dependencies<span class="o">()</span>
+endif<span class="o">()</span>
+
+ament_package<span class="o">()</span>
+</code></pre></div>
+<h3 id="packagexml">package.xml</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="cp">&lt;?xml-model href=&quot;http://download.ros.org/schema/package_format3.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;</span>
+<span class="nt">&lt;package</span> <span class="na">format=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;name&gt;</span>mulecar_plugins<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.0.1<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;description&gt;</span>TODO: Package description<span class="nt">&lt;/description&gt;</span>
+  <span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;robobe2020@gmail.com&quot;</span><span class="nt">&gt;</span>user<span class="nt">&lt;/maintainer&gt;</span>
+  <span class="nt">&lt;license&gt;</span>TODO: License declaration<span class="nt">&lt;/license&gt;</span>
+
+  <span class="nt">&lt;buildtool_depend&gt;</span>ament_cmake<span class="nt">&lt;/buildtool_depend&gt;</span>
+
+  <span class="nt">&lt;depend&gt;</span>std_msgs<span class="nt">&lt;/depend&gt;</span>
+
+  <span class="nt">&lt;build_depend&gt;</span>gazebo_dev<span class="nt">&lt;/build_depend&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>gazebo_ros<span class="nt">&lt;/build_depend&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>rclcpp<span class="nt">&lt;/build_depend&gt;</span>
+
+  <span class="nt">&lt;exec_depend&gt;</span>gazebo_dev<span class="nt">&lt;/exec_depend&gt;</span>
+  <span class="nt">&lt;exec_depend&gt;</span>gazebo_ros<span class="nt">&lt;/exec_depend&gt;</span>
+  <span class="nt">&lt;exec_depend&gt;</span>rclcpp<span class="nt">&lt;/exec_depend&gt;</span>
+
+  <span class="nt">&lt;test_depend&gt;</span>ament_lint_auto<span class="nt">&lt;/test_depend&gt;</span>
+  <span class="nt">&lt;test_depend&gt;</span>ament_lint_common<span class="nt">&lt;/test_depend&gt;</span>
+
+  <span class="nt">&lt;export&gt;</span>
+    <span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
+  <span class="nt">&lt;/export&gt;</span>
+<span class="nt">&lt;/package&gt;</span>
+</code></pre></div>
+&nbsp;<br />
+&nbsp;  </p>
+<h2 id="mulecar_sim">mulecar_sim</h2>
+<ul>
+<li>World</li>
+<li>Launch</li>
+</ul>
+<h3 id="world">world</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span> 
+<span class="nt">&lt;sdf</span> <span class="na">version=</span><span class="s">&quot;1.4&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;world</span> <span class="na">name=</span><span class="s">&quot;default&quot;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Ground Plane --&gt;</span>
+    <span class="nt">&lt;include&gt;</span>
+      <span class="nt">&lt;uri&gt;</span>model://ground_plane<span class="nt">&lt;/uri&gt;</span>
+    <span class="nt">&lt;/include&gt;</span>
+
+    <span class="nt">&lt;include&gt;</span>
+      <span class="nt">&lt;uri&gt;</span>model://sun<span class="nt">&lt;/uri&gt;</span>
+    <span class="nt">&lt;/include&gt;</span>
+
+    <span class="nt">&lt;model</span> <span class="na">name=</span><span class="s">&quot;box&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;pose&gt;</span>0 0 0.5 0 0 0<span class="nt">&lt;/pose&gt;</span>
+      <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;link&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;collision</span> <span class="na">name=</span><span class="s">&quot;collision&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;geometry&gt;</span>
+            <span class="nt">&lt;box&gt;</span>
+              <span class="nt">&lt;size&gt;</span>1 1 1<span class="nt">&lt;/size&gt;</span>
+            <span class="nt">&lt;/box&gt;</span>
+          <span class="nt">&lt;/geometry&gt;</span>
+        <span class="nt">&lt;/collision&gt;</span>
+
+        <span class="nt">&lt;visual</span> <span class="na">name=</span><span class="s">&quot;visual&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;geometry&gt;</span>
+            <span class="nt">&lt;box&gt;</span>
+              <span class="nt">&lt;size&gt;</span>1 1 1<span class="nt">&lt;/size&gt;</span>
+            <span class="nt">&lt;/box&gt;</span>
+          <span class="nt">&lt;/geometry&gt;</span>
+        <span class="nt">&lt;/visual&gt;</span>
+      <span class="nt">&lt;/link&gt;</span>
+
+      <span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&quot;simple_plug&quot;</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_ros_simple.so&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/model&gt;</span>        
+  <span class="nt">&lt;/world&gt;</span>
+<span class="nt">&lt;/sdf&gt;</span>
+</code></pre></div>
+<p>&nbsp;<br />
+&nbsp;  </p>
+<h2 id="test">Test</h2>
+<ul>
+<li>Run gazebo</li>
+<li>List Topics</li>
+<li>Pub and test</li>
+</ul>
+<h3 id="run-gazebo">Run gazebo</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># from ws root folder</span>
+gazebo --verbose -s install/mulecar_plugins/lib/libgazebo_ros_simple.so src/mulecar_sim/worlds/plug_test.world
+</code></pre></div>
+<h3 id="list-topics">List Topics</h3>
+<div class="highlight"><pre><span></span><code>ros2 topic list
+<span class="c1"># Result</span>
+/clock
+/gazebo_ros_simple
+/parameter_events
+/rosout
+</code></pre></div>
+<h3 id="pub-and-test">Pub and Test</h3>
+<div class="highlight"><pre><span></span><code>ros2 topic pub --once /gazebo_ros_simple std_msgs/msg/String <span class="s2">&quot;{data: &#39;hello gazebo&#39;}&quot;</span>
+<span class="c1"># Result</span>
+publisher: beginning loop
+publishing <span class="c1">#1: std_msgs.msg.String(data=&#39;hello gazebo&#39;)</span>
+</code></pre></div>
+<h4 id="view-gazebo-verbose-log">View gazebo verbose log</h4>
+<div class="highlight"><pre><span></span><code>...
+[Msg] OnRosStringMsg
+[INFO] [1634791768.355582634] [simple_plug]: hello gazebo
+</code></pre></div>
+<h2 id="using-launch-file">using launch file</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span><span class="p">,</span> <span class="n">get_package_prefix</span>
+<span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">ExecuteProcess</span>
+
+<span class="n">world_prefix</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s2">&quot;mulecar_sim&quot;</span><span class="p">)</span>
+<span class="n">plugins</span> <span class="o">=</span> <span class="n">get_package_prefix</span><span class="p">(</span><span class="s2">&quot;mulecar_plugins&quot;</span><span class="p">)</span>
+
+<span class="n">world_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">world_prefix</span><span class="p">,</span> <span class="s2">&quot;worlds&quot;</span><span class="p">,</span> <span class="s2">&quot;plug_test.world&quot;</span><span class="p">)</span>
+<span class="n">plugins_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">world_prefix</span><span class="p">,</span> <span class="s2">&quot;lib&quot;</span><span class="p">)</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">get_package_prefix</span><span class="p">(</span><span class="s2">&quot;mulecar_plugins&quot;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+
+    <span class="n">env</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;GAZEBO_MODEL_PATH&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GAZEBO_MODEL_PATH&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;GAZEBO_PLUGIN_PATH&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GAZEBO_PLUGIN_PATH&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="n">plugins_path</span><span class="p">,</span>
+        <span class="s2">&quot;GAZEBO_RESOURCE_PATH&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GAZEBO_RESOURCE_PATH&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">ExecuteProcess</span><span class="p">(</span>
+                <span class="n">cmd</span><span class="o">=</span><span class="p">[</span>
+                    <span class="s2">&quot;gazebo&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;libgazebo_ros_simple.so&quot;</span><span class="p">,</span>
+                    <span class="n">world_file</span>
+                <span class="p">],</span>
+                <span class="n">output</span><span class="o">=</span><span class="s2">&quot;screen&quot;</span><span class="p">,</span>
+                <span class="n">additional_env</span><span class="o">=</span><span class="n">env</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>!!! note
+    When launch from ROS gazebo alert 
+    <div class="highlight"><pre><span></span><code>[gazebo-1] [Err] [gazebo_shared.cc:46] System is attempting to load a plugin, but detected an incorrect plugin type
+</code></pre></div>
+    The plugin run correctly 
+    todo: Need more research</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f89c2efe.min.js"></script>
+      
+    
+  </body>
+</html>
