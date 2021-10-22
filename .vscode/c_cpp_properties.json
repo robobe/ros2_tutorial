@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${default}",
+                "/usr/include/gazebo-11",
+                "/usr/include/ignition/math6",
+                "/usr/include/sdformat-9.5",
+                "/usr/include/ignition/common3",
+                "/usr/include/ignition/fuel_tools4",
+                "/usr/include/ignition/msgs5",
+                "/usr/include/ignition/transport8",
+                "${workspaceFolder}/src/mulecar_plugins",
+                "${workspaceFolder}/src/mulecar_plugins/include",
+                "/opt/ros/foxy/include"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
