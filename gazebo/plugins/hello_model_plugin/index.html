@@ -402,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../launch-gazebo/" class="md-nav__link">
+      <a href="../../robot/urdf_sdf/" class="md-nav__link">
         Spwan robot
       </a>
     </li>
@@ -675,10 +675,10 @@
               
                 
                 
-                <h1 id="model-plugin">Model plugin</h1>
+                <h1 id="model-plugin">Model plugin<a class="headerlink" href="#model-plugin" title="Permanent link">&para;</a></h1>
 <p>Create basic plugins and project structure</p>
 <p>&nbsp;  </p>
-<h2 id="project-structure">Project structure</h2>
+<h2 id="project-structure">Project structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>├── bin
 │   └── libptz_plugin.so
 ├── build
@@ -692,13 +692,13 @@
 └── worlds
     └── plug_teste.world
 </code></pre></div>
-<h2 id="cmakefiles-hierarchy">CMakefiles hierarchy</h2>
+<h2 id="cmakefiles-hierarchy">CMakefiles hierarchy<a class="headerlink" href="#cmakefiles-hierarchy" title="Permanent link">&para;</a></h2>
 <ul>
 <li>root</li>
 <li>plugins</li>
 <li>for each plugin sub directory</li>
 </ul>
-<h3 id="root">root</h3>
+<h3 id="root">root<a class="headerlink" href="#root" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code>cmake_minimum_required<span class="o">(</span>VERSION <span class="m">3</span>.0<span class="o">)</span>
 project <span class="o">(</span>gz<span class="o">)</span>
 <span class="c1"># Find Gazebo</span>
@@ -711,7 +711,7 @@ add_subdirectory<span class="o">(</span>plugins<span class="o">)</span>
 </code></pre></div>
 &NewLine;<br />
 &NewLine;  </p>
-<h3 id="plugins">plugins</h3>
+<h3 id="plugins">plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h3>
 <ul>
 <li>This cmake file call other plugin cmake files</li>
 </ul>
@@ -719,14 +719,14 @@ add_subdirectory<span class="o">(</span>plugins<span class="o">)</span>
 </code></pre></div>
 &NewLine;<br />
 &NewLine;  </p>
-<h3 id="plugin">plugin</h3>
+<h3 id="plugin">plugin<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code>add_library<span class="o">(</span>ptz_plugin SHARED ptz_plugin.cpp<span class="o">)</span>
 target_link_libraries<span class="o">(</span>ptz_plugin <span class="si">${</span><span class="nv">GAZEBO_LIBRARIES</span><span class="si">}</span><span class="o">)</span>
 install<span class="o">(</span>TARGETS ptz_plugin DESTINATION <span class="si">${</span><span class="nv">PROJECT_SOURCE_DIR</span><span class="si">}</span>/bin<span class="o">)</span>
 </code></pre></div>
 &NewLine;<br />
 &NewLine;  </p>
-<h2 id="plugin-code">Plugin code</h2>
+<h2 id="plugin-code">Plugin code<a class="headerlink" href="#plugin-code" title="Permanent link">&para;</a></h2>
 <ul>
 <li>print log message to Console using <code>gzdbg</code> <code>gzmsg</code> <code>gzwarn</code> <code>gzerr</code> when running gazebo in verbose mode</li>
 </ul>
@@ -773,7 +773,7 @@ install<span class="o">(</span>TARGETS ptz_plugin DESTINATION <span class="si">$
 <span class="w">  </span><span class="n">GZ_REGISTER_MODEL_PLUGIN</span><span class="p">(</span><span class="n">Ptz</span><span class="p">)</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
-<h2 id="world-example">world example</h2>
+<h2 id="world-example">world example<a class="headerlink" href="#world-example" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span> 
 <span class="nt">&lt;sdf</span> <span class="na">version=</span><span class="s">&quot;1.4&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;world</span> <span class="na">name=</span><span class="s">&quot;default&quot;</span><span class="nt">&gt;</span>
@@ -812,7 +812,7 @@ install<span class="o">(</span>TARGETS ptz_plugin DESTINATION <span class="si">$
   <span class="nt">&lt;/world&gt;</span>
 <span class="nt">&lt;/sdf&gt;</span>
 </code></pre></div>
-<h3 id="usage">usage</h3>
+<h3 id="usage">usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># dont forget add plugin `so` to GAZEBO_PLUGIN_PATH</span>
 gazebo --verbose world/plug_test.world
 

@@ -365,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gazebo/launch-gazebo/" class="md-nav__link">
+      <a href="../../gazebo/robot/urdf_sdf/" class="md-nav__link">
         Spwan robot
       </a>
     </li>
@@ -605,11 +605,11 @@
               
                 
                 
-                <h1 id="launch-file">Launch file</h1>
-<h3 id="python-package">Python package</h3>
+                <h1 id="launch-file">Launch file<a class="headerlink" href="#launch-file" title="Permanent link">&para;</a></h1>
+<h3 id="python-package">Python package<a class="headerlink" href="#python-package" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>ros2 pkg_create --build-type ament_python &lt;pkg-name&gt;   
 </code></pre></div>
-<h3 id="launch-file_1">launch file</h3>
+<h3 id="launch-file_1">launch file<a class="headerlink" href="#launch-file_1" title="Permanent link">&para;</a></h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -629,7 +629,7 @@
 </span>            <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;screen&#39;</span><span class="p">)])</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="setuppy">setup.py</h3>
+<h3 id="setuppy">setup.py<a class="headerlink" href="#setuppy" title="Permanent link">&para;</a></h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -688,12 +688,12 @@
 <li>(line 22) Node entry point call by the launch file <code>launch_ros.actions.Node</code> method argument <code>executable</code></li>
 <li></li>
 </ul>
-<h2 id="build-and-run">Build and Run</h2>
+<h2 id="build-and-run">Build and Run<a class="headerlink" href="#build-and-run" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>colcon build --symlink-install --packages-select &lt;pkg_name&gt;
 <span class="nb">source</span> install/setup.bash
 ros2 launch &lt;pkg_name&gt; &lt;launc_file&gt;.launch.py
 </code></pre></div>
-<h2 id="resources">Resources</h2>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.ros.org/en/foxy/Tutorials/Launch-system.html">Launching/monitoring multiple nodes with Launch</a></li>
 </ul>

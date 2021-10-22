@@ -377,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="gazebo/launch-gazebo/" class="md-nav__link">
+      <a href="gazebo/robot/urdf_sdf/" class="md-nav__link">
         Spwan robot
       </a>
     </li>
@@ -629,7 +629,7 @@
               
                 
                 
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
+                <h1 id="welcome-to-mkdocs">Welcome to MkDocs<a class="headerlink" href="#welcome-to-mkdocs" title="Permanent link">&para;</a></h1>
 <p>ss
 <div class="highlight"><pre><span></span><code># ROS2
 
@@ -650,10 +650,10 @@ colcon build --package-select my_rotate_bot
 colcon build --symlink-install
 </code></pre></div></p>
 <p>if you do colcon build --symlink-install, then instead of a copy of the launch file it will put a symbolic link to the launchfile. This means that if you change something to the launch file in your package you don't have to rebuild the package for the changes to take effect. This is only true for files that don require compilation, so --symlink-install will work for config files or python code / launch files etc.</p>
-<h2 id="run">run</h2>
+<h2 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>ros2 launch my_rotate_bot robot_state_publisher.launch.py
 </code></pre></div>
-<h2 id="tf">tf</h2>
+<h2 id="tf">tf<a class="headerlink" href="#tf" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>ros2 topic list
 # 
 /joint_states
@@ -663,7 +663,7 @@ colcon build --symlink-install
 /tf
 /tf_static
 </code></pre></div>
-<h3 id="joint_state_publisher">joint_state_publisher</h3>
+<h3 id="joint_state_publisher">joint_state_publisher<a class="headerlink" href="#joint_state_publisher" title="Permanent link">&para;</a></h3>
 <p>install from apt-get or package package.xml
 <div class="highlight"><pre><span></span><code>sudo apt install ros-foxy-joint-state-publisher
 </code></pre></div></p>
@@ -672,11 +672,11 @@ colcon build --symlink-install
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>rosdep install -i --from-path src --rosdistro foxy -y
 </code></pre></div>
-<h4 id="run_1">run</h4>
+<h4 id="run_1">run<a class="headerlink" href="#run_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>ros2 run joint_state_publisher joint_state_publisher ./src/my_rotate_bot/urdf/model.urdf
 </code></pre></div>
-<h2 id="robot_state_publisher-vs-joint_state_publisher">robot_state_publisher vs joint_state_publisher</h2>
-<h1 id="wiki">Wiki</h1>
+<h2 id="robot_state_publisher-vs-joint_state_publisher">robot_state_publisher vs joint_state_publisher<a class="headerlink" href="#robot_state_publisher-vs-joint_state_publisher" title="Permanent link">&para;</a></h2>
+<h1 id="wiki">Wiki<a class="headerlink" href="#wiki" title="Permanent link">&para;</a></h1>
 <p><div class="highlight"><pre><span></span><code>git submodule add https://github.com/robobe/ros2_tutorial.wiki.git wiki
 git commit -m &quot;Adding wiki&quot;
 git push

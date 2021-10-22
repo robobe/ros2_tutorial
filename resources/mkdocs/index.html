@@ -297,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gazebo/launch-gazebo/" class="md-nav__link">
+      <a href="../../gazebo/robot/urdf_sdf/" class="md-nav__link">
         Spwan robot
       </a>
     </li>
@@ -807,19 +807,19 @@
               
                 
                 
-                <h1 id="setup-mkdocs">Setup mkdocs</h1>
-<h2 id="pip">Pip</h2>
+                <h1 id="setup-mkdocs">Setup mkdocs<a class="headerlink" href="#setup-mkdocs" title="Permanent link">&para;</a></h1>
+<h2 id="pip">Pip<a class="headerlink" href="#pip" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>mkdocs-material
 mkdocs-include-markdown-plugin
 <span class="c1">#mkdocs</span>
 <span class="c1">#mkdocs-material-extensions</span>
 </code></pre></div>
-<h2 id="docs-folder-struct">Docs folder struct</h2>
+<h2 id="docs-folder-struct">Docs folder struct<a class="headerlink" href="#docs-folder-struct" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>└── docs
     ├── img
     │   └── course.png
 </code></pre></div>
-<h2 id="basic-mkdocs-config">Basic mkdocs config</h2>
+<h2 id="basic-mkdocs-config">Basic mkdocs config<a class="headerlink" href="#basic-mkdocs-config" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>site_name: ROS Coockbook
 theme:
   name: material
@@ -850,19 +850,19 @@ markdown_extensions:
 plugins:
   - include-markdown
 </code></pre></div>
-<h2 id="mkdocs-commands">Mkdocs commands</h2>
+<h2 id="mkdocs-commands">Mkdocs commands<a class="headerlink" href="#mkdocs-commands" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>mkdocs serve
 mkdocs build --clean
 mkdocs gh-deploy
 </code></pre></div>
-<h3 id="deploy-to-git-hub">Deploy to git hub</h3>
+<h3 id="deploy-to-git-hub">Deploy to git hub<a class="headerlink" href="#deploy-to-git-hub" title="Permanent link">&para;</a></h3>
 <ul>
 <li>In repository <code>settings</code> select <code>pages</code></li>
 <li>Set source to branch <code>gh-pages</code> and folder to <code>/root</code></li>
 </ul>
 <p><img alt="" src="../../img/githubpages.png" /></p>
-<h2 id="extentions">Extentions</h2>
-<h3 id="attr_list">attr_list</h3>
+<h2 id="extentions">Extentions<a class="headerlink" href="#extentions" title="Permanent link">&para;</a></h2>
+<h3 id="attr_list">attr_list<a class="headerlink" href="#attr_list" title="Permanent link">&para;</a></h3>
 <p>Allows to add HTML attributes and CSS classes to Markdown elements</p>
 <div class="highlight"><pre><span></span><code>markdown_extensions:
   - attr_list
@@ -870,34 +870,34 @@ mkdocs gh-deploy
 <p>control image width and height
 <div class="highlight"><pre><span></span><code>![](../img/course.png){ width=200, height=50) }
 </code></pre></div></p>
-<h3 id="code-block">Code block</h3>
+<h3 id="code-block">Code block<a class="headerlink" href="#code-block" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>markdown_extensions:
   - pymdownx.snippets
 </code></pre></div>
-<h4 id="usage">usage</h4>
+<h4 id="usage">usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h4>
 <p><img alt="" src="../../img/embedded_code_block.png" /></p>
-<h3 id="heightlite-code">Heightlite code</h3>
+<h3 id="heightlite-code">Heightlite code<a class="headerlink" href="#heightlite-code" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
 </code></pre></div>
-<h4 id="usage_1">usage</h4>
+<h4 id="usage_1">usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>&gt; ```python hl_lines=&quot;2&quot;
 import os
 print(&quot;hightlite line&quot;)
 &gt; ```
 </code></pre></div>
-<h4 id="result">result</h4>
+<h4 id="result">result<a class="headerlink" href="#result" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="hll"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hightlite line&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <p>&nbsp;<br />
 &nbsp;  </p>
-<h2 id="images">images</h2>
+<h2 id="images">images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>![](../img/course.png){ width=200, height=50) }
 </code></pre></div>
-<h2 id="plugins">Plugins</h2>
-<h3 id="mkdocs-include-markdown-plugin">mkdocs-include-markdown-plugin</h3>
+<h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
+<h3 id="mkdocs-include-markdown-plugin">mkdocs-include-markdown-plugin<a class="headerlink" href="#mkdocs-include-markdown-plugin" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mondeja/mkdocs-include-markdown-plugin">project readme</a></p>
 <div class="highlight"><pre><span></span><code>{%
    include-markdown &quot;../README.md&quot;

@@ -14,7 +14,7 @@
     
     
       
-        <title>Sites - ROS Coockbook</title>
+        <title>VSCode top extenuations - ROS Coockbook</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sites" class="md-skip">
+        <a href="#vscode-top-extenuations" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sites
+              VSCode top extenuations
             
           </span>
         </div>
@@ -297,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gazebo/launch-gazebo/" class="md-nav__link">
+      <a href="../../gazebo/robot/urdf_sdf/" class="md-nav__link">
         Spwan robot
       </a>
     </li>
@@ -483,6 +483,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prettier-code-formatter" class="md-nav__link">
+    Prettier - Code formatter
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -494,31 +509,9 @@
               
                 
                 
-                <h1 id="sites">Sites</h1>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=ZgzsYvne5Gs">[RoboCup][V-RoHOW] Hands-on with ROS 2</a></li>
-<li><a href="https://answers.ros.org/question/375249/gazebo-model-plugin-for-ros2/"> Gazebo model plugin for ROS2
-</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code>Without more info it is difficult to know where you&#39;re exactly stuck, but for me the trickiest was to get all the paths set up correctly so that everything was loaded correctly.
-
-Note for instance the model path set in the package.xml file of the description package:
-
-  &lt;export&gt;
-    &lt;build_type&gt;ament_cmake&lt;/build_type&gt;
-    &lt;gazebo_ros gazebo_model_path=&quot;${prefix}/..&quot; /&gt;
-  &lt;/export&gt;
-
-, which is then picked up in the launch file using GazeboRosPaths:
-
-model_path, plugin_path, media_path = GazeboRosPaths.get_paths()
-
-Most of the complexity is because ${prefix} in package.xml, get_package_share_directory in the launch file, and package:// in the URDF don&#39;t all point to the same directory under your installation, especially if you involve Rviz. See especially this commit to see some changes I had to make along the way to get it all to work:
-
-https://gitlab.com/boldhearts/ros2_bo...
-
-Hopefully this helps you in the right direction! Let us know of specific issues/error messages you&#39;re getting, so that I can then try to make this answer more specific.
-</code></pre></div>
+                <h1 id="vscode-top-extenuations">VSCode top extenuations<a class="headerlink" href="#vscode-top-extenuations" title="Permanent link">&para;</a></h1>
+<h2 id="prettier-code-formatter">Prettier - Code formatter<a class="headerlink" href="#prettier-code-formatter" title="Permanent link">&para;</a></h2>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">marketplace</a></p>
                 
               
               
