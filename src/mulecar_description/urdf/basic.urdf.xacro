@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot name="myfirst"
+    xmlns:xacro="http://www.ros.org/wiki/xacro">>
+    <xacro:include filename="$(find mulecar_description)/urdf/macros.xacro" />
+    <xacro:property name="radius" value="0.1"/>
+    <xacro:property name="height" value="0.5"/>
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="5" />
+            <xacro:cylinder_inertia m="5" r="${radius}" h="${height}"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="${radius}" length="${height}"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0.0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="${radius}" length="${height}"/>
+            </geometry>
+        </visual>
+    </link>
+</robot>

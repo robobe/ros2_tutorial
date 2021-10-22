@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- https://gazebosim.org/tutorials?tut=camera_save&cat=sensors -->
+<!-- https://gitlab.informatik.uni-bremen.de/tom_sch/mulecar_simulation -->
+<sdf version='1.6'>
+  <world name='default'>
+    <model name='unit_box'>
+      <pose>0 0 2.5 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <light name='user_directional_light_0' type='directional'>
+      <pose>0 0 1 0 0 0</pose>
+    </light>
+    <model name='camera'>
+      <static>true</static>
+      <pose>-1 0 2 0 1 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+        </visual>
+        <plugin name="elevator" filename="libgazebo_ros_elevator.so">
+        </plugin>
+      </link>
+    </model>
+  </world>
+</sdf>
