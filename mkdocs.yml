@@ -2,22 +2,7 @@ site_name: ROS Coockbook
 theme:
   name: material
 
-nav:
-    - Home: index.md
-    - Launch: ros2/launch.md
-    - Gazebo:
-        - Plugins:
-          - Hello model: gazebo/plugins/hello_model_plugin.md
-          - Hello With ROS2: gazebo/plugins/hello_model_ros2_plugin.md
-        - Spwan robot: gazebo/robot/urdf_sdf.md
-        - Camera: wine.md
-        - LIDAR: tastings.md
-        - Resource: gazebo/resource.md
-    - ROS2: 
-        - Msg: msg.md
-    - Resources:
-        - mkdocs: resources/mkdocs.md
-    - About: about.md
+
 
 markdown_extensions:
   - pymdownx.snippets

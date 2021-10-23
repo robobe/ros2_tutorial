@@ -1,6 +1,10 @@
 {
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
-        "*.world": "xml"
+        "*.world": "xml",
+        "*.sdf": "xml",
+        "*.urdf": "xml",
+        "*.xacro": "xml"
+
     }
 }
