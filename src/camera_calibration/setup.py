@@ -24,6 +24,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'img_sub = camera_calibration.sub_image:main'
         ],
     },
 )
