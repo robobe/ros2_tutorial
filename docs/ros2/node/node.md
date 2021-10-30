@@ -84,8 +84,40 @@ ros2 launch ros2_workshop node_params_args.launch.py demo_param:=False
 
 
 ### node YAML params
+
 - load node parameters from YAML file
-- 
+
+!!! note
+    Don't forget copy `config` folder to install folder
+    ```
+     data_files=[
+        ...
+        (os.path.join('share', package_name, "config"), glob('config/*'))
+    ],
+    ```
+
+#### yaml file
+```yaml  linenums="1" hl_lines="1"
+--8<-- "src/ros2_workshop/config/params.yaml"
+```
+
+#### node example
+```python  linenums="1" hl_lines="8"
+--8<-- "src/ros2_workshop/ros2_workshop/test_yaml_params.py"
+```
+
+#### run from cli
+```
+ros2 run ros2_workshop yaml_node --ros-args --params-file src/ros2_workshop/config/params.yaml
+```
+
+#### run from launch
+```python linenums="1" hl_lines="17"
+--8<-- "src/ros2_workshop/launch/node_yaml_params.launch.py"
+```
+
+!!! Notet
+    Notice that name in `yaml` params file must the same as the node name even in launch file `name` node argument 
 &nbsp;  
 &nbsp;  
 &nbsp;  
