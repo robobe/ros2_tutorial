@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'camera_calibration'
+package_name = 'ros2_workshop'
 
 setup(
     name=package_name,
@@ -12,8 +12,8 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name, "sdf"), glob('sdf/*')),
-        (os.path.join('share', package_name), glob('launch/*'))
+        (os.path.join('share', package_name), glob('launch/*.launch.py')),
+        (os.path.join('share', package_name), glob('config/*'))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -24,9 +24,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'img_sub = camera_calibration.sub_image:main',
-            'mini = camera_calibration.mini_node:main',
-            'pnode = camera_calibration.param_node:main'
+            'pnode = ros2_workshop.param_node:main',
+            'yaml_node = ros2_workshop.test_yaml_params:main'
         ],
     },
 )

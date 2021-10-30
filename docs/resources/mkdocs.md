@@ -111,6 +111,16 @@ print("hightlite line")
 
 &nbsp;  
 &nbsp;  
+### Add line numbers
+#### usage
+```
+> ```python linenums="1"
+import os
+print("hightlite line")
+> ```
+```
+&nbsp;  
+&nbsp;  
 ## images
 
 ```
