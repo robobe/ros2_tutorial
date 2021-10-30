@@ -5,7 +5,7 @@ from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch import logging
-from launch.substitutions import Command
+import xacro
 
 log = logging.get_logger(__name__)
 
@@ -14,10 +14,11 @@ PACAKGE_NAME = "m2wr_description"
 def generate_launch_description():
     pkg_share = get_package_share_directory(PACAKGE_NAME)
       
-    log.info(pkg_share)
     # Set the path to the URDF file
     xacro_file = os.path.join(pkg_share, "urdf", "m2wr.xacro")
-
+    doc = xacro.parse(open(xacro_file))
+    xacro.process_doc(doc)
+    params = {'robot_description': doc.toxml()}
 
 
     return LaunchDescription([
