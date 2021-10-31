@@ -13,7 +13,7 @@ PACAKGE_NAME = "m2wr_description"
 
 def generate_launch_description():
     pkg_share = get_package_share_directory(PACAKGE_NAME)
-      
+    world_file = os.path.join(pkg_share, "worlds", "world1.world")
     # Set the path to the URDF file
     xacro_file = os.path.join(pkg_share, "urdf", "m2wr.xacro")
     doc = xacro.parse(open(xacro_file))
@@ -28,7 +28,8 @@ def generate_launch_description():
                 "-s",
                 "libgazebo_ros_init.so",
                 "-s",
-                "libgazebo_ros_factory.so"
+                "libgazebo_ros_factory.so",
+                world_file
             ],
             output="screen"
         ),

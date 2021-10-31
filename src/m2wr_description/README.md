@@ -36,3 +36,12 @@ echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
 # from ws root folder
 colcon build --packages-select m2wr_description
 ```
+
+### Part3
+[source](https://www.theconstructsim.com/exploring-ros-2-wheeled-robot-part-03-urdf-laser-scan/)
+
+
+### Other reference
+- [two_wheeled_robot_ROS_tutorial ](https://github.com/sulibo/two_wheeled_robot_ROS_tutorial)
+- [ROS1 to ROS2 migration](https://github.com/ros-simulation/gazebo_ros_pkgs/wiki)
+- [other project to explore](https://bitbucket.org/theconstructcore/box_car/src/foxy/)
