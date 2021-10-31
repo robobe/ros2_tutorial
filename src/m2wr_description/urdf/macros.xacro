@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<robot>
-    <macro name="link_wheel" params="name">
+<robot xmlns:xacro="https://www.ros.org/wiki/xacro">
+    <xacro:macro name="link_wheel" params="name">
         <link name="${name}">
             <inertial>
               <mass value="0.2"/>
@@ -20,9 +20,9 @@
               </geometry>
             </visual>
         </link>
-    </macro>
+    </xacro:macro>
 
-    <macro name="joint_wheel" params="name child origin_xyz">
+    <xacro:macro name="joint_wheel" params="name child origin_xyz">
       <joint name="${name}" type="continuous">
         <origin rpy="0 0 0" xyz="${origin_xyz}"/>
         <child link="${child}"/>
@@ -31,5 +31,5 @@
         <limit effort="10000" velocity="1000"/>
         <joint_properties damping="1.0" friction="1.0"/>
       </joint>
-    </macro>
+    </xacro:macro>
 </robot>
