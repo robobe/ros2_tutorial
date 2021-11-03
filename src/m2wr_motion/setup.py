@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'read_node = m2wr_motion.reading_laser:main'
+            'read_node = m2wr_motion.reading_laser:main',
+            'goto = m2wr_motion.goto:main'
         ],
     },
 )
