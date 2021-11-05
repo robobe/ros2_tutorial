@@ -24,6 +24,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            't_node = ros2_workshop.node_template_timer:main',
             'pnode = ros2_workshop.param_node:main',
             'yaml_node = ros2_workshop.test_yaml_params:main'
         ],
