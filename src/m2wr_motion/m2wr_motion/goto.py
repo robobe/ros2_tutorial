@@ -6,9 +6,12 @@ from nav_msgs.msg import Odometry
 import math
 import tf_transformations
 
+RAD2DEG = 57.2957795130823209
+
 class MinimalSubscriber(Node):
     def __init__(self):
         super().__init__('go_to_point')
+        self.get_logger().info("start ---2--------------------")
         self.pub_twist = self.create_publisher(Twist, '/m2wr/cmd_vel', 1)
         self.subscription = self.create_subscription(
             Odometry,
@@ -16,21 +19,19 @@ class MinimalSubscriber(Node):
             self.clbk_odom,
             10)
         self.subscription  # prevent unused variable warning
-        self.timer = self.create_timer(1.0, self.__state_machine)
-        self.desired_position_ = Point()
-        self.desired_position_.x = -3.0
-        self.desired_position_.y = 7.0
-        self.desired_position_.z = 0.0
-        self.yaw_precision_ = math.pi / 90 # +/- 2 degree allowed
-        self.dist_precision_ = 0.3
-        self.yaw_ = 0
-        self.state_ = 0
+        self.speed = Twist()
+        self.goal = Point()
+        self.goal.x = 5.0
+        self.goal.y = 5.0
+        self.goal.z = 0.0
+        self.theta = 0.0
+        self.timer = self.create_timer(1.0/10, self.__simple_goto)
         
 
     def clbk_odom(self, msg):
         # position
         self.position_ = msg.pose.pose.position
-        self.get_logger().info('I heard: "%s"' % self.position_)
+        # self.get_logger().info('I heard: "%s"' % self.position_)
         # yaw
         quaternion = (
             msg.pose.pose.orientation.x,
@@ -38,68 +39,29 @@ class MinimalSubscriber(Node):
             msg.pose.pose.orientation.z,
             msg.pose.pose.orientation.w)
         euler = tf_transformations.euler_from_quaternion(quaternion)
-        self.yaw_ = euler[2]
-        self.get_logger().info(self.yaw_)
+        self.theta = euler[2]
+        
+        # self.__state_machine()
 
-    def fix_yaw(self, des_pos):
-        desired_yaw = math.atan2(
-            des_pos.y - self.position_.y, 
-            des_pos.x - self.position_.x)
-        err_yaw = desired_yaw - self.yaw_
-        
-        twist_msg = Twist()
-        if math.fabs(err_yaw) > self.yaw_precision_:
-            twist_msg.angular.z = 0.7 if err_yaw > 0 else -0.7
-        
-        
-        self.pub_twist.publish(twist_msg)
-        
-        # state change conditions
-        if math.fabs(err_yaw) <= self.yaw_precision_:
-            self.get_logger().info(('Yaw error: [%s]' % err_yaw))
-            self.change_state(1)
+    def __simple_goto(self):
+        inc_x = self.goal.x - self.position_.x
+        inc_y = self.goal.y - self.position_.y
 
-    def change_state(self, state):
-        self.state_ = state
-        print ('State changed to [%s]' % self.state_)
+        angle_to_goal = math.atan2(inc_y, inc_x)
+        err_angle = angle_to_goal - self.theta
+        err_pos = math.sqrt(pow(self.goal.y - self.position_.y, 2) + pow(self.goal.x - self.position_.x, 2))
+        self.get_logger().info("theta: {} ,angle to goal: {}".format(self.theta * RAD2DEG,err_angle))
 
-    def go_straight_ahead(self, des_pos):
-        desired_yaw = math.atan2(des_pos.y - self.position_.y, des_pos.x - self.position_.x)
-        err_yaw = desired_yaw - self.yaw_
-        err_pos = math.sqrt(pow(des_pos.y - self.position_.y, 2) + pow(des_pos.x - self.position_.x, 2))
-        
-        if err_pos > self.dist_precision_:
-            twist_msg = Twist()
-            twist_msg.linear.x = 0.6
-            self.pub_twist.publish(twist_msg)
+        if abs(err_angle) > 0.1:
+            self.speed.linear.x = 0.0
+            self.speed.angular.z = 0.3
+        elif err_pos > 0.1:
+            self.speed.linear.x = 0.5
+            self.speed.angular.z = 0.0
         else:
-            print ('Position error: [%s]' % err_pos)
-            self.change_state(2)
-        
-        # state change conditions
-        if math.fabs(err_yaw) > self.yaw_precision_:
-            print ('Yaw error: [%s]' % err_yaw)
-            self.change_state(0)
-
-    def done(self):
-        twist_msg = Twist()
-        twist_msg.linear.x = 0
-        twist_msg.angular.z = 0
-        self.pub_twist.publish(twist_msg)
-
-    def __state_machine(self):
-        while rclpy.ok:
-            if self.state_ == 0:
-                self.fix_yaw(self.desired_position_)
-            elif self.state_ == 1:
-                self.go_straight_ahead(self.desired_position_)
-            elif self.state_ == 2:
-                self.done()
-                pass
-            else:
-                self.get_logger().error('Unknown state!')
-                pass
-
+            self.speed.linear.x = 0.0
+            self.speed.angular.z = 0.0
+        self.pub_twist.publish(self.speed)
 
 def main(args=None):
     rclpy.init(args=args)
