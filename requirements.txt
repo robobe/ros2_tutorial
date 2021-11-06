@@ -1,2 +1,4 @@
 mkdocs-material
 mkdocs-include-markdown-plugin
+# tags
+pip install git+https://github.com/jldiaz/mkdocs-plugin-tags.git

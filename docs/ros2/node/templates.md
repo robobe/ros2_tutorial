@@ -1,3 +1,9 @@
+---
+title: node template
+tags:
+    - nodes
+    - log
+---
 # ROS2 Node Templates
 
 ## Python basic
@@ -12,9 +18,9 @@
 &nbsp;  
 &nbsp;  
 &nbsp;  
-### Logger
+## Logger
 [Logger level configuration](https://docs.ros.org/en/foxy/Tutorials/Logging-and-logger-configuration.html)
-#### Console output formatting
+### Console output formatting
 ```
 export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} "
 ```
@@ -27,7 +33,7 @@ export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} "
 - severity: the name of the severity level, e.g. INFO
 - time: the timestamp of log message in floating point seconds
 
-#### Console output colorizing
+### Console output colorizing
 - [ros doc](https://docs.ros.org/en/foxy/Tutorials/Logging-and-logger-configuration.html)
 
 ```bash
@@ -36,10 +42,10 @@ export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} "
 export RCUTILS_COLORIZED_OUTPUT=0 
 ```
 
-![](/img/2021-11-05-13-09-28.png)
+![COLORIZED_OUTPUT](/img/2021-11-05-13-09-28.png)
 
 
-#### Control log level
+### Control log level
 Run node with log level control
 
 
@@ -51,16 +57,16 @@ Run node with log level control
 ```
 ros2 run ros2_workshop t_node --ros-args --log-level debug
 ```
-![](/img/2021-11-05-13-20-02.png)
+![log_level_debug](/img/2021-11-05-13-20-02.png)
 
 ```
 ros2 run ros2_workshop t_node --ros-args --log-level warn
 ```
-![](/img/2021-11-05-13-15-30.png))
+![log_level_warn](/img/2021-11-05-13-15-30.png))
 
 &nbsp;  
 &nbsp;  
-#### Log once
+### Log once
 - Add `once` argument to log method
 
 ```python
@@ -68,7 +74,7 @@ self.get_logger().info('log once', once=True)
 self.get_logger().error('log once', once=True)
 ```
 
-![](/img/2021-11-05-13-28-50.png)
+![log_once](/img/2021-11-05-13-28-50.png)
 
 !!! note
     See the log once log lines
@@ -77,7 +83,7 @@ self.get_logger().error('log once', once=True)
 &nbsp;  
 &nbsp;  
 &nbsp;  
-#### Log skip and throttle
+### Log skip and throttle
 - Control log output
 
 ```python
@@ -91,4 +97,4 @@ self.get_logger().warn('skip and throttle',
     declare `self.system_clock = Clock()` in class `__init__`  
     import `from rclpy.clock import Clock` 
 
-![](/img/2021-11-05-14-09-54.png)
+![throttle](/img/2021-11-05-14-09-54.png)
