@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'read_node = m2wr_motion.reading_laser:main',
-            'goto = m2wr_motion.goto:main'
+            'goto = m2wr_motion.goto:main',
+            'spawn_box=m2wr_motion.spawn_box:main'
         ],
     },
 )

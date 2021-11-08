@@ -138,3 +138,6 @@ print("hightlite line")
 %}
 
 ```
+
+# Resources
+- [plugins](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins)
