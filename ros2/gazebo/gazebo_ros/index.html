@@ -14,7 +14,7 @@
     
     
       
-        <title>ROS2 Gazebo simple demo - ROS Coockbook</title>
+        <title>ROS2 Gazebo - ROS Coockbook</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ros2-gazebo-simple-demo" class="md-skip">
+        <a href="#ros2-gazebo" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ROS2 Gazebo simple demo
+              ROS2 Gazebo
             
           </span>
         </div>
@@ -438,6 +438,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../resources/apps/" class="md-nav__link">
+        App and Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../resources/mkdocs/" class="md-nav__link">
         Setup mkdocs
       </a>
@@ -483,18 +497,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3_4">
+        <label class="md-nav__link" for="__nav_3_5">
           Plugins
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Plugins" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_4">
+        <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
           Plugins
         </label>
@@ -689,9 +703,53 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ROS2 Gazebo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
-        ROS2 Gazebo simple demo
+        ROS2 Gazebo
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gazebo_ros_factory" class="md-nav__link">
+    gazebo_ros_factory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gazebo_ros_init" class="md-nav__link">
+    gazebo_ros_init
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gazebo_ros_properties" class="md-nav__link">
+    gazebo_ros_properties
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -927,6 +985,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gazebo_ros_factory" class="md-nav__link">
+    gazebo_ros_factory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gazebo_ros_init" class="md-nav__link">
+    gazebo_ros_init
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gazebo_ros_properties" class="md-nav__link">
+    gazebo_ros_properties
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -938,26 +1025,63 @@
               
                 
                 
-                <h1 id="ros2-gazebo-simple-demo">ROS2 Gazebo simple demo<a class="headerlink" href="#ros2-gazebo-simple-demo" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Create package for simulation</li>
-<li>Create package for project plugins</li>
-<li></li>
-<li>Launch gazebo world that include</li>
-<li>project model</li>
-<li>project plugin</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># simulation package</span>
-ros2 pkg create --build-type ament_cmake mulecar_sim
-
-<span class="c1">#plugins package</span>
-ros2 pkg create --build-type ament_cmake mulecar_plugins
+                <h1 id="ros2-gazebo">ROS2 Gazebo<a class="headerlink" href="#ros2-gazebo" title="Permanent link">&para;</a></h1>
+<p>Run gazebo with ros2 functionality</p>
+<h3 id="gazebo_ros_factory">gazebo_ros_factory<a class="headerlink" href="#gazebo_ros_factory" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>gazebo --verbose -s libgazebo_ros_factory.so
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>├── launch
-├── models
-├── worlds
-├── CMakeLists.txt
-└── package.xml
+<div class="highlight"><pre><span></span><code>ros2 service list
+<span class="c1">#</span>
+/delete_entity
+/gazebo/describe_parameters
+/gazebo/get_parameter_types
+/gazebo/get_parameters
+/gazebo/list_parameters
+/gazebo/set_parameters
+/gazebo/set_parameters_atomically
+/get_model_list
+/spawn_entity
+</code></pre></div>
+<h3 id="gazebo_ros_init">gazebo_ros_init<a class="headerlink" href="#gazebo_ros_init" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>gazebo --verbose -s libgazebo_ros_init.so
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ros2 service list
+<span class="c1">#</span>
+/pause_physics
+/reset_simulation
+/reset_world
+/spawn_entity
+/unpause_physics
+</code></pre></div>
+<h3 id="gazebo_ros_properties">gazebo_ros_properties<a class="headerlink" href="#gazebo_ros_properties" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;sdf</span> <span class="na">version=</span><span class="s">&quot;1.4&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;world</span> <span class="na">name=</span><span class="s">&quot;default&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;include&gt;</span>
+      <span class="nt">&lt;uri&gt;</span>model://ground_plane<span class="nt">&lt;/uri&gt;</span>
+    <span class="nt">&lt;/include&gt;</span>
+
+    <span class="nt">&lt;include&gt;</span>
+      <span class="nt">&lt;uri&gt;</span>model://sun<span class="nt">&lt;/uri&gt;</span>
+    <span class="nt">&lt;/include&gt;</span>
+
+    <span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&quot;properties&quot;</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_ros_properties.so&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/world&gt;</span>
+<span class="nt">&lt;/sdf&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/get_joint_properties
+/get_light_properties
+/get_link_properties
+/get_model_properties
+/properties/describe_parameters
+/properties/get_parameter_types
+/properties/get_parameters
+/properties/list_parameters
+/properties/set_parameters
+/properties/set_parameters_atomically
+/set_joint_properties
+/set_light_properties
+/set_link_properties
 </code></pre></div>
                 
               
